@@ -14,7 +14,7 @@ Array::Array() {
 
 
 void Array::print() {
-    if (size == 0) {
+    if (size == 0 || data == nullptr) {
         cout << "Array is empty" << endl;
         return;
     }
@@ -150,9 +150,22 @@ void Array::pop_front() {
     delete[] temporaryArray;
 }
 
+void Array::swap(int source_index, int destination_index) {
+    if (data == nullptr) {
+        cout << "Array is empty" << endl;
+        return;
+    }
+
+    int temporaryValue = data[source_index];
+    data[source_index] = data[destination_index];
+    data[destination_index] = temporaryValue;
+}
+
 Array::~Array() {
     delete[] data;
 }
+
+
 
 
 

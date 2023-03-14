@@ -14,8 +14,12 @@ void BinaryHeap::pop() {
         cout << "Heap is empty" << endl;
         return;
     }
-    _heap.pop_front();
+    _heap.swap(0, _heap.size() - 1);
+    _heap.pop_back();
     heapify_down(0);
+
+    //todo: after pop structure can be bad?
+//    heapify_up(_heap.size() - 1);
 }
 
 void BinaryHeap::push(int value) {
@@ -40,6 +44,8 @@ void BinaryHeap::print(std::string prefix, int index, bool isLeft) {
 
         print(prefix + (isLeft ? "|   " : "    "), 2 * index + 1, true);
         print(prefix + (isLeft ? "|   " : "    "), 2 * index + 2, false);
+
+
     }
 }
 

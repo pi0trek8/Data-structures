@@ -79,6 +79,18 @@ build CMakeFiles/List.dir/BinaryHeap/BinaryHeap.cpp.obj: CXX_COMPILER__List_Debu
   OBJECT_DIR = CMakeFiles\List.dir
   OBJECT_FILE_DIR = CMakeFiles\List.dir\BinaryHeap
 
+build CMakeFiles/List.dir/DoubleList/DoubleList.cpp.obj: CXX_COMPILER__List_Debug C$:/Users/pszczypi/Desktop/List/DoubleList/DoubleList.cpp || cmake_object_order_depends_target_List
+  DEP_FILE = CMakeFiles\List.dir\DoubleList\DoubleList.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\List.dir
+  OBJECT_FILE_DIR = CMakeFiles\List.dir\DoubleList
+
+build CMakeFiles/List.dir/DoubleList/Node.cpp.obj: CXX_COMPILER__List_Debug C$:/Users/pszczypi/Desktop/List/DoubleList/Node.cpp || cmake_object_order_depends_target_List
+  DEP_FILE = CMakeFiles\List.dir\DoubleList\Node.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\List.dir
+  OBJECT_FILE_DIR = CMakeFiles\List.dir\DoubleList
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target List
@@ -87,7 +99,7 @@ build CMakeFiles/List.dir/BinaryHeap/BinaryHeap.cpp.obj: CXX_COMPILER__List_Debu
 #############################################
 # Link the executable List.exe
 
-build List.exe: CXX_EXECUTABLE_LINKER__List_Debug CMakeFiles/List.dir/main.cpp.obj CMakeFiles/List.dir/LinkedList/Node/Node.cpp.obj CMakeFiles/List.dir/LinkedList/LinkedList.cpp.obj CMakeFiles/List.dir/Array/Array.cpp.obj CMakeFiles/List.dir/BinaryHeap/BinaryHeap.cpp.obj
+build List.exe: CXX_EXECUTABLE_LINKER__List_Debug CMakeFiles/List.dir/main.cpp.obj CMakeFiles/List.dir/LinkedList/Node/Node.cpp.obj CMakeFiles/List.dir/LinkedList/LinkedList.cpp.obj CMakeFiles/List.dir/Array/Array.cpp.obj CMakeFiles/List.dir/BinaryHeap/BinaryHeap.cpp.obj CMakeFiles/List.dir/DoubleList/DoubleList.cpp.obj CMakeFiles/List.dir/DoubleList/Node.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\List.dir

@@ -29,6 +29,8 @@ public:
 
     void pop_front();
 
+    void swap(int source_index, int destination_index);
+
     virtual ~Array();
 };
 

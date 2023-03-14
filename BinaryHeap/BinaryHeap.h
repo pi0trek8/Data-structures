@@ -18,13 +18,14 @@ private:
         int right_child_index = 2 * index + 2;
         int largest = index;
 
+        if (right_child_index < _heap.size() && _heap.get(right_child_index) > _heap.get(largest)) {
+            largest = right_child_index;
+        }
         if (left_child_index < _heap.size() && _heap.get(left_child_index) > _heap.get(largest)) {
             largest = left_child_index;
         }
 
-        if (right_child_index < _heap.size() && _heap.get(right_child_index) > _heap.get(largest)) {
-            largest = right_child_index;
-        }
+
 
         if (largest != index) {
             _heap.swap(index, largest);
@@ -52,6 +53,10 @@ public:
     int findElementByIndex();
 
     void print();
+
+    void printHeap() {
+        _heap.printList();
+    }
 };
 
 
