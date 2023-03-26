@@ -1,3 +1,0 @@
-C:/Users/Admin/Desktop/Struktury-danych/cmake-build-debug/CMakeFiles/List.dir
-C:/Users/Admin/Desktop/Struktury-danych/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Admin/Desktop/Struktury-danych/cmake-build-debug/CMakeFiles/rebuild_cache.dir
