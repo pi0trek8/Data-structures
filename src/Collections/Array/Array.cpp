@@ -187,6 +187,10 @@ int Array::get(int index) {
     return data[index];
 }
 
+std::string Array::get_name() {
+    return "Array";
+}
+
 
 
 

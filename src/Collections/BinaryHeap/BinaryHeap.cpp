@@ -71,5 +71,9 @@ int BinaryHeap::find(int element) {
     return 0;
 }
 
+std::string BinaryHeap::get_name() {
+    return "Binary_Heap";
+}
+
 
 

@@ -249,4 +249,8 @@ int DoubleList::get_size() {
     return list_size;
 }
 
+std::string DoubleList::get_name() {
+    return "List";
+}
+
 

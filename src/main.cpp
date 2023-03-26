@@ -9,11 +9,11 @@
 using namespace std;
 
 int main() {
-//
-//    TimerTester timerTester;
-//
-//    timerTester.test_get<DoubleList>(100, 3);
+    FileReader fileReader;
+    DoubleList list = fileReader.read_collection_from_file<DoubleList>("List_push_front_100.csv");
 
-    TimeTesterppp<BinaryHeap>::make_test(100,3);
+    list.print();
+    cout << list.get_size();
+//    TimeTesterppp<BinaryHeap>::make_test(100,3);
     return 0;
 }

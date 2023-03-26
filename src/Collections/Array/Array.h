@@ -39,6 +39,8 @@ public:
 
     void swap(int source_index, int destination_index);
 
+    std::string get_name();
+
     virtual ~Array();
 };
 

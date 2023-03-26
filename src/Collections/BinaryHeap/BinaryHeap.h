@@ -67,6 +67,8 @@ public:
 
     void print();
 
+    std::string get_name();
+
     void printHeap() {
         _heap.print();
     }

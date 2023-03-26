@@ -40,6 +40,8 @@ public:
 
     int get(int index);
 
+    std::string get_name();
+
 };
 
 
