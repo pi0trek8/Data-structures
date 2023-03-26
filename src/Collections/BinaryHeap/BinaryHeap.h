@@ -1,5 +1,5 @@
 //
-// Created by Piotr on 07.03.2023.
+// Created by Piotr Szczypior on 07.03.2023.
 //
 
 #ifndef LIST_BINARYHEAP_H
@@ -7,21 +7,22 @@
 
 
 #include <algorithm>
-#include "../LinkedList/LinkedList.h"
+#include "../DoubleList/DoubleList.h"
+#include "../Array/Array.h"
 
-class BinaryHeap {
+class BinaryHeap : AbstractCollection {
 private:
-    LinkedList _heap;
+    DoubleList _heap;
 
     void heapify_down(int index) {
         int left_child_index = 2 * index + 1;
         int right_child_index = 2 * index + 2;
         int largest = index;
 
-        if (right_child_index < _heap.size() && _heap.get(right_child_index) > _heap.get(largest)) {
+        if (right_child_index < _heap.get_size() && _heap.get(right_child_index) > _heap.get(largest)) {
             largest = right_child_index;
         }
-        if (left_child_index < _heap.size() && _heap.get(left_child_index) > _heap.get(largest)) {
+        if (left_child_index < _heap.get_size() && _heap.get(left_child_index) > _heap.get(largest)) {
             largest = left_child_index;
         }
 
@@ -46,16 +47,28 @@ private:
 
 public:
 
-    void push(int value);
+    void push_back(int value) override;
 
-    void pop();
+    void pop_back() override;
+
+    void push_front(int element) override;
+
+    void insert(int element, int index) override;
+
+    void remove(int index) override;
+
+    void pop_front() override;
+
+    void clear() override;
+
+    int find(int element) override;
 
     int findElementByIndex();
 
     void print();
 
     void printHeap() {
-        _heap.printList();
+        _heap.print();
     }
 };
 

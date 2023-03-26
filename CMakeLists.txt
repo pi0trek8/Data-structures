@@ -3,4 +3,4 @@ project(List)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(List main.cpp LinkedList/Node/Node.cpp LinkedList/Node/Node.h LinkedList/LinkedList.cpp LinkedList/LinkedList.h Array/Array.cpp Array/Array.h BinaryHeap/BinaryHeap.cpp BinaryHeap/BinaryHeap.h DoubleList/DoubleList.cpp DoubleList/DoubleList.h DoubleList/Node.cpp DoubleList/Node.h)
+add_executable(List src/main.cpp src/Collections/Array/Array.cpp src/Collections/Array/Array.h src/Collections/BinaryHeap/BinaryHeap.cpp src/Collections/BinaryHeap/BinaryHeap.h src/Collections/DoubleList/DoubleList.cpp src/Collections/DoubleList/DoubleList.h src/Collections/AbstractCollection.h src/Collections/RedBlackTree/Node.h src/Collections/RedBlackTree/Color.h src/Collections/DoubleList/Node/DoubleListNode.cpp src/Collections/DoubleList/Node/DoubleListNode.h src/TimeTester/TimeTesterppp.h src/FileReader/FileReader.h src/TimeTester/TimerTester.h src/TimeTester/RandomGenerator.h src/TimeTester/Timer.h src/FileWriter/FileWriter.h)

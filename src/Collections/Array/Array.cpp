@@ -1,5 +1,5 @@
 //
-// Created by Piotr on 07.03.2023.
+// Created by Piotr Szczypior on 07.03.2023.
 //
 
 #include <iostream>
@@ -25,11 +25,11 @@ void Array::print() {
     cout << endl;
 }
 
-int Array::getSize() {
+int Array::get_size() {
     return size;
 }
 
-void Array::add(int index, int value) {
+void Array::insert(int index, int value) {
     if (data == nullptr) {
         data = new int[++size];
         data[0] = value;
@@ -96,7 +96,7 @@ void Array::push_back(int value) {
     delete[] temporaryArray;
 }
 
-void Array::deleteIndex(int index) {
+void Array::remove(int index) {
     if (data == nullptr) {
         cout << "Array is empty" << endl;
         return;
@@ -163,6 +163,28 @@ void Array::swap(int source_index, int destination_index) {
 
 Array::~Array() {
     delete[] data;
+}
+
+void Array::clear() {
+    delete[] data;
+    data = nullptr;
+    size = 0;
+}
+
+int Array::find(int element) {
+    for(int i = 0; i < size - 1; i ++) {
+        if(data[i] == element) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int Array::get(int index) {
+    if (index < 0 || index >= size) {
+        throw invalid_argument("index: " + to_string(index) + " is out of bounds for length: " + to_string(size));
+    }
+    return data[index];
 }
 
 
