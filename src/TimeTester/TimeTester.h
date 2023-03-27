@@ -2,10 +2,10 @@
 // Created by Piotr Szczypior on 25/03/2023.
 //
 
-#ifndef LIST_TIMERTESTER_H
-#define LIST_TIMERTESTER_H
+#ifndef LIST_TIMETESTER_H
+#define LIST_TIMETESTER_H
 
-#include "TimerTester.h"
+#include "TimeTester.h"
 #include "RandomGenerator.h"
 #include "Timer.h"
 #include "../FileWriter/FileWriter.h"
@@ -38,7 +38,7 @@ public:
     void test_get(int collection_size, int test_count);
 };
 
+#include "TimeTester.cpp"
 
 
-
-#endif //LIST_TIMERTESTER_H
+#endif //LIST_TIMETESTER_H
