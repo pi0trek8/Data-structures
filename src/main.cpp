@@ -9,15 +9,12 @@
 using namespace std;
 
 int main() {
-//    FileReader fileReader;
-//    DoubleList list = fileReader.read_collection_from_file<DoubleList>("List_push_front_100.csv");
-//
-//    list.print();
-//    cout << list.get_size();
-    FileReader reader;
-    BinaryHeap heap = reader.read_collection_from_file<BinaryHeap>("test.txt");
 
-    heap.print();
-//    TimeTesterppp<BinaryHeap>::make_test(100,3);
+    DoubleList list;
+    TimeTester timeTester;
+    timeTester.test_insert<DoubleList>(1000000, 5);
+
+
+
     return 0;
 }

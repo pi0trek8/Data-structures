@@ -20,7 +20,7 @@ public:
 
     void timeStop();
 
-    long int elapsedTime();
+    long elapsedTime() const;
 };
 
 void Timer::timeStart() {
@@ -31,7 +31,7 @@ void Timer::timeStop() {
     endTime = high_resolution_clock::now();
 }
 
-long Timer::elapsedTime() {
+long Timer::elapsedTime() const {
     return duration_cast<nanoseconds>(endTime - initialTime).count();
 }
 

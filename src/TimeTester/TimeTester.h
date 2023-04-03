@@ -2,15 +2,15 @@
 // Created by Piotr Szczypior on 25/03/2023.
 //
 
-#ifndef LIST_TIMERTESTER_H
-#define LIST_TIMERTESTER_H
+#ifndef LIST_TIMETESTER_H
+#define LIST_TIMETESTER_H
 
-#include "TimerTester.h"
+#include "TimeTester.h"
 #include "RandomGenerator.h"
 #include "Timer.h"
 #include "../FileWriter/FileWriter.h"
 
-class TimerTester {
+class TimeTester {
 
 public:
     template<class T>
@@ -38,9 +38,8 @@ public:
     void test_get(int collection_size, int test_count);
 };
 
-
 template<class T>
-void TimerTester::test_get(int collection_size, int test_count) {
+void TimeTester::test_get(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
     T collection;
@@ -70,7 +69,7 @@ void TimerTester::test_get(int collection_size, int test_count) {
 }
 
 template<class T>
-void TimerTester::test_find(int collection_size, int test_count) {
+void TimeTester::test_find(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
     T collection;
@@ -99,7 +98,7 @@ void TimerTester::test_find(int collection_size, int test_count) {
 }
 
 template<class T>
-void TimerTester::test_remove(int collection_size, int test_count) {
+void TimeTester::test_remove(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
     T collection;
@@ -128,7 +127,7 @@ void TimerTester::test_remove(int collection_size, int test_count) {
 }
 
 template<class T>
-void TimerTester::test_pop_front(int collection_size, int test_count) {
+void TimeTester::test_pop_front(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
     T collection;
@@ -152,31 +151,7 @@ void TimerTester::test_pop_front(int collection_size, int test_count) {
 }
 
 template<class T>
-void TimerTester::test_pop_back(int collection_size, int test_count) {
-    RandomGenerator random_generator;
-    Timer timer;
-    T collection;
-    FileWriter file;
-    auto whole_time = 0;
-
-    for (int test_number = 0; test_number < test_count; test_number++) {
-        collection = random_generator.fill_collection<T>(collection_size);
-
-        timer.timeStart();
-        collection.pop_back();
-        timer.timeStop();
-        auto duration = timer.elapsedTime();
-        whole_time += duration;
-        cout << test_number << " test is " << duration << endl;
-
-        file.write_to_file(collection.get_name() + "_insert_", collection_size, duration);
-    }
-
-    cout << "Average time of 'pop_back' operation is: " << whole_time / test_count << endl;
-}
-
-template<class T>
-void TimerTester::test_insert(int collection_size, int test_count) {
+void TimeTester::test_insert(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
     T collection;
@@ -207,7 +182,7 @@ void TimerTester::test_insert(int collection_size, int test_count) {
 }
 
 template<class T>
-void TimerTester::test_push_front(int collection_size, int test_count) {
+void TimeTester::test_push_front(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
     T collection;
@@ -236,7 +211,31 @@ void TimerTester::test_push_front(int collection_size, int test_count) {
 }
 
 template<class T>
-void TimerTester::test_push_back(int collection_size, int test_count) {
+void TimeTester::test_pop_back(int collection_size, int test_count) {
+    RandomGenerator random_generator;
+    Timer timer;
+    T collection;
+    FileWriter file;
+    auto whole_time = 0;
+
+    for (int test_number = 0; test_number < test_count; test_number++) {
+        collection = random_generator.fill_collection<T>(collection_size);
+
+        timer.timeStart();
+        collection.pop_back();
+        timer.timeStop();
+        auto duration = timer.elapsedTime();
+        whole_time += duration;
+        cout << test_number << " test is " << duration << endl;
+
+        file.write_to_file(collection.get_name() + "_insert_", collection_size, duration);
+    }
+
+    cout << "Average time of 'pop_back' operation is: " << whole_time / test_count << endl;
+}
+
+template<class T>
+void TimeTester::test_push_back(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
     T collection;
@@ -265,5 +264,4 @@ void TimerTester::test_push_back(int collection_size, int test_count) {
 }
 
 
-
-#endif //LIST_TIMERTESTER_H
+#endif //LIST_TIMETESTER_H
