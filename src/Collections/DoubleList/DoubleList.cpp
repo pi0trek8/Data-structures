@@ -12,24 +12,22 @@ using namespace std;
 void DoubleList::push_back(int element) {
     if (head == nullptr) {
         head = new DoubleListNode(element);
+        tail = head;
         list_size++;
         return;
     }
-    DoubleListNode *temporary_node = head;
 
-    while (temporary_node->next_node != nullptr) {
-        temporary_node = temporary_node->next_node;
-    }
-
-    DoubleListNode *newNode = new DoubleListNode(element);
-    newNode->previous_node = temporary_node;
-    temporary_node->next_node = newNode;
+    DoubleListNode *temporary_node = tail;
+    tail = new DoubleListNode(element);
+    temporary_node->next_node = tail;
+    tail->previous_node = temporary_node;
     list_size++;
 }
 
 void DoubleList::push_front(int element) {
     if (head == nullptr) {
         head = new DoubleListNode(element);
+        tail = head;
         list_size++;
         return;
     }
@@ -46,11 +44,10 @@ void DoubleList::insert(int element, int index) {
         cerr << "index: " << index << " is out of bounds for length: " << list_size << endl;
         return;
     }
-
-    auto *temporary_node = head;
-    DoubleListNode *new_node = new DoubleListNode(element);
+    auto *new_node = new DoubleListNode(element);
 
     if (index == 0) {
+        auto temporary_node = head;
         head = new_node;
         new_node->next_node = temporary_node;
         temporary_node->previous_node = new_node;
@@ -58,8 +55,27 @@ void DoubleList::insert(int element, int index) {
         return;
     }
 
-    for (int i = 0; i < index - 1; i++) {
-        temporary_node = temporary_node->next_node;
+    if (index == list_size) {
+        auto temporary_node = tail;
+        tail = new_node;
+        temporary_node->next_node = tail;
+        tail->previous_node = temporary_node;
+        list_size++;
+        return;
+    }
+
+    DoubleListNode *temporary_node;
+
+    if (index < list_size) {
+        temporary_node = head;
+        for (int i = 0; i < index - 1; i++) {
+            temporary_node = temporary_node->next_node;
+        }
+    } else {
+        temporary_node = tail;
+        for (int i = 0; i < index - 1; i++) {
+            temporary_node = temporary_node->previous_node;
+        }
     }
 
     auto *node_to_slide = temporary_node->next_node;
@@ -84,27 +100,44 @@ void DoubleList::remove(int index) {
         return;
     }
 
-    DoubleListNode *temporaryNode = head;
-
-    for (int i = 0; i < index - 1; i++) {
-        temporaryNode = temporaryNode->next_node;
-    }
-    auto *node_to_slide = temporaryNode->next_node->next_node;
-
-    delete temporaryNode->next_node;
-
-    if (node_to_slide == nullptr) {
-        temporaryNode->next_node = nullptr;
+    if (index == list_size - 1) {
+        pop_back();
         return;
     }
-    temporaryNode->next_node = node_to_slide;
-    node_to_slide->previous_node = temporaryNode;
+
+    DoubleListNode *temporary_node = nullptr;
+
+    if (index < list_size) {
+        temporary_node = head;
+        for (int i = 0; i < index - 1; i++) {
+            temporary_node = temporary_node->next_node;
+        }
+    } else {
+        temporary_node = tail;
+        for (int i = 0; i < index - 1; i++) {
+            temporary_node = temporary_node->previous_node;
+        }
+    }
+
+    auto *node_to_slide = temporary_node->next_node->next_node;
+
+    delete temporary_node->next_node;
+
+    if (node_to_slide == nullptr) {
+        temporary_node->next_node = nullptr;
+        return;
+    }
+    temporary_node->next_node = node_to_slide;
+    node_to_slide->previous_node = temporary_node;
     list_size--;
 }
 
 void DoubleList::pop_front() {
     if (list_size == 1) {
+        auto temp_node = head;
+        tail = nullptr;
         head = nullptr;
+        delete temp_node;
         list_size--;
         return;
     }
@@ -116,19 +149,18 @@ void DoubleList::pop_front() {
 }
 
 void DoubleList::pop_back() {
-    DoubleListNode *temporary_node = head;
-    if (head->next_node == nullptr) {
+    if (list_size == 1) {
+        auto temp_node = head;
         head = nullptr;
-        delete temporary_node;
+        tail = nullptr;
+        delete temp_node;
         list_size--;
         return;
     }
-
-    while (temporary_node->next_node != nullptr) {
-        temporary_node = temporary_node->next_node;
-    }
+    DoubleListNode *temporary_node = tail;
 
     temporary_node->previous_node->next_node = nullptr;
+    tail = tail->previous_node;
     delete temporary_node;
     list_size--;
 }
@@ -143,6 +175,7 @@ void DoubleList::clear() {
     }
     delete temporary_node;
     head = nullptr;
+    tail = nullptr;
     list_size = 0;
 }
 
@@ -237,9 +270,18 @@ int DoubleList::get(int index) {
     if (index < 0 || index >= list_size) {
         throw invalid_argument("index: " + to_string(index) + " is out of bounds for length: " + to_string(list_size));
     }
-    DoubleListNode *temporary_node = head;
-    for (int i = 0; i < index; i++) {
-        temporary_node = temporary_node->next_node;
+    DoubleListNode *temporary_node;
+
+    if (index < list_size) {
+        temporary_node = head;
+        for (int i = 0; i < index; i++) {
+            temporary_node = temporary_node->next_node;
+        }
+    } else {
+        temporary_node = tail;
+        for (int i = 0; i < index; i++) {
+            temporary_node = temporary_node->previous_node;
+        }
     }
 
     return temporary_node->value;

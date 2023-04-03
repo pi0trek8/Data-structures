@@ -13,6 +13,7 @@ class DoubleList : public AbstractCollection {
 
 private:
     DoubleListNode *head = nullptr;
+    DoubleListNode *tail = nullptr;
     int list_size = 0;
 
 public:
