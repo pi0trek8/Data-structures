@@ -5,17 +5,17 @@
 #ifndef LIST_DOUBLELISTNODE_H
 #define LIST_NODE_H
 
-#include "Color.h"
+#include "../Color.h"
 
-class DoubleListNode {
+class Node {
 public:
-    explicit DoubleListNode(int value);
-
     int value;
-    DoubleListNode *parent;
-    DoubleListNode *left_child;
-    DoubleListNode *right_child;
+    Node *parent;
+    Node *left_child;
+    Node *right_child;
     Color color;
+
+    explicit Node(int value);
 };
 
 #endif //LIST_DOUBLELISTNODE_H
