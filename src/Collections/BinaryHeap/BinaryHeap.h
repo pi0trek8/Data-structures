@@ -9,27 +9,34 @@
 #include <algorithm>
 #include "../Array/Array.h"
 
-class BinaryHeap : AbstractCollection {
+class BinaryHeap {
 private:
-    Array _heap;
+//    Array _heap;
+    int *_heap;
+    int array_size;
 
     void heapify_down(int index);
 
     void heapify_up(int index);
 
+    void resize_array(int size);
+
     void print(std::string prefix, int value, bool isLeft);
 
 public:
+    BinaryHeap();
 
-    void push_back(int value) override;
+    void push_back(int value);
 
-    void pop_back() override;
+    void pop_front();
 
-    bool find_element();
+    bool find_element(int element);
 
     void print();
 
     std::string get_name();
+
+    virtual ~BinaryHeap();
 };
 
 
