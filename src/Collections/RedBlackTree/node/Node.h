@@ -2,7 +2,7 @@
 // Created by Piotr Szczypior on 25/03/2023.
 //
 
-#ifndef LIST_DOUBLELISTNODE_H
+#ifndef  LIST_NODE_H
 #define LIST_NODE_H
 
 #include "../Color.h"
@@ -16,6 +16,8 @@ public:
     Color color;
 
     explicit Node(int value);
+
+    virtual ~Node();
 };
 
-#endif //LIST_DOUBLELISTNODE_H
+#endif //LIST_NODE_H
