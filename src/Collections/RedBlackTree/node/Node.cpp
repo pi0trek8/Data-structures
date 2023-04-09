@@ -8,5 +8,7 @@ Node::Node(int value) : value(value) {
     this->left_child = nullptr;
     this->right_child = nullptr;
     this->parent = nullptr;
-    this->color = Color::red;
+    this->color = Color::RED;
 }
+
+Node::~Node() = default;

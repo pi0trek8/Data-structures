@@ -7,7 +7,7 @@
 
 enum class Color
 {
-    red, black
+    RED, BLACK
 };
 
 #endif //LIST_COLOR_H
