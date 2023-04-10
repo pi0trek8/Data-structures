@@ -16,12 +16,12 @@ class FileReader {
 public:
 
     template<class T>
-    T read_collection_from_file(std::string file_path);
+    T* read_collection_from_file(std::string file_path);
 };
 
 template<class T>
-T FileReader::read_collection_from_file(std::string file_path) {
-    T collection;
+T* FileReader::read_collection_from_file(std::string file_path) {
+    T *collection = new T();
     fstream file;
     file.open(file_path, ios::in);
 
@@ -34,7 +34,7 @@ T FileReader::read_collection_from_file(std::string file_path) {
         try {
             line.erase(std::remove_if(line.begin(), line.end(), ::isspace),
                        line.end());
-            collection.push_back(std::stoi(line));
+            collection->push_back(std::stoi(line));
         } catch (std::invalid_argument ex) {
             cout << "Invalid argument: " << line << " in " << ex.what() << endl;
         }
