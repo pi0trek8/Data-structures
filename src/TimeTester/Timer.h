@@ -20,20 +20,10 @@ public:
 
     void timeStop();
 
-    long elapsedTime() const;
+    long elapsedTime();
 };
 
-void Timer::timeStart() {
-    initialTime = high_resolution_clock::now();
-}
 
-void Timer::timeStop() {
-    endTime = high_resolution_clock::now();
-}
-
-long Timer::elapsedTime() const {
-    return duration_cast<nanoseconds>(endTime - initialTime).count();
-}
 
 
 #endif //LIST_TIMER_H
