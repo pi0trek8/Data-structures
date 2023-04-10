@@ -25,7 +25,7 @@ public:
 
     void pop_front();
 
-    bool find_element(int value);
+    bool find(int value);
 
     void print();
 

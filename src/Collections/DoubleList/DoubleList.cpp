@@ -5,7 +5,6 @@
 #include <iostream>
 #include "DoubleList.h"
 #include "Node/DoubleListNode.h"
-#include <string>
 
 using namespace std;
 
@@ -106,7 +105,7 @@ void DoubleList::remove(int index) {
         return;
     }
 
-    DoubleListNode *temporary_node = nullptr;
+    DoubleListNode *temporary_node;
 
     if (index < list_size) {
         temporary_node = head;
@@ -292,8 +291,8 @@ int DoubleList::get_size() {
     return list_size;
 }
 
-//string DoubleList::get_name() {
-//    return "List";
-//}
+string DoubleList::get_name() {
+    return "List";
+}
 
 

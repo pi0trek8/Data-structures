@@ -145,7 +145,7 @@ Node *RedBlackTree::get_uncle(Node *node) {
     return grand_parent->left_child;
 }
 
-void RedBlackTree::remove(int value) {
+void RedBlackTree::remove_element(int value) {
     Node *node_to_delete = _root;
 
     while (node_to_delete != nullptr) {
@@ -338,5 +338,9 @@ int RedBlackTree::find(int value) {
     return -1;
 }
 
-RedBlackTree::~RedBlackTree() = default;
+string RedBlackTree::get_name() {
+    return "RedBlackTree";
+}
+
+
 

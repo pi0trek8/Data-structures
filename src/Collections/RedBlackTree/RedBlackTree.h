@@ -5,15 +5,16 @@
 #ifndef LIST_REDBLACKTREE_H
 #define LIST_REDBLACKTREE_H
 
-
 #include <string>
 #include "node/Node.h"
+
+using namespace std;
 
 class RedBlackTree {
 private:
     Node *_root;
 
-    Node* get_uncle(Node* node);
+    Node *get_uncle(Node *node);
 
     void rotate_left(Node *node_to_rotate);
 
@@ -23,17 +24,17 @@ private:
 
     void print_helper(Node *node, std::string indent, bool isLast, bool isFirst);
 
-    Node* delete_node(Node* node);
+    Node *delete_node(Node *node);
 
-    void replace_child(Node* old_child, Node* new_child);
+    void replace_child(Node *old_child, Node *new_child);
 
-    Node* find_minimum(Node* node);
+    Node *find_minimum(Node *node);
 
-    void fix_delete(Node* node);
+    void fix_delete(Node *node);
 
-    Node* get_sibling(Node* node);
+    Node *get_sibling(Node *node);
 
-    bool is_black(Node* node);
+    bool is_black(Node *node);
 
 public:
 
@@ -41,13 +42,13 @@ public:
 
     void push_back(int value);
 
-    void remove(int value);
+    void remove_element(int value);
 
     void print();
 
     int find(int value);
 
-    virtual ~RedBlackTree();
+    string get_name();
 };
 
 

@@ -70,7 +70,7 @@ std::string BinaryHeap::get_name() {
     return "Binary_Heap";
 }
 
-bool BinaryHeap::find_element(int value) {
+bool BinaryHeap::find(int value) {
     return _heap.find(value) != -1;
 }
 

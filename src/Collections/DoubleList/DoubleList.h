@@ -43,8 +43,7 @@ public:
 
     int get(int index);
 
-//    string get_name();
-
+    static string get_name();
 };
 
 
