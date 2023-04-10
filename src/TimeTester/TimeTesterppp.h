@@ -62,7 +62,7 @@ public:
             collection_push_back_duration += std::chrono::duration_cast<std::chrono::UNIT>(push_back_duration).count();
 
             auto remove_back_start = std::chrono::high_resolution_clock::now();
-            collection.pop_back();
+            collection.pop_front();
             auto remove_back_end = std::chrono::high_resolution_clock::now();
             auto remove_back_duration = remove_back_end - remove_back_start;
             collection_remove_back_duration += std::chrono::duration_cast<std::chrono::UNIT>(remove_back_duration).count();

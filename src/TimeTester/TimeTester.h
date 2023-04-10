@@ -138,7 +138,7 @@ void TimeTester::test_pop_front(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.find();
+        collection.pop_front();
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
@@ -222,7 +222,7 @@ void TimeTester::test_pop_back(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.pop_back();
+        collection.pop_front();
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
@@ -231,7 +231,7 @@ void TimeTester::test_pop_back(int collection_size, int test_count) {
         file.write_to_file(collection.get_name() + "_insert_", collection_size, duration);
     }
 
-    cout << "Average time of 'pop_back' operation is: " << whole_time / test_count << endl;
+    cout << "Average time of 'pop_front' operation is: " << whole_time / test_count << endl;
 }
 
 template<class T>
