@@ -5,9 +5,11 @@
 #ifndef LIST_DOUBLELIST_H
 #define LIST_DOUBLELIST_H
 
-
+#include <string>
 #include "../AbstractCollection.h"
 #include "Node/DoubleListNode.h"
+
+using namespace std;
 
 class DoubleList : public AbstractCollection {
 
@@ -41,7 +43,7 @@ public:
 
     int get(int index);
 
-    std::string get_name();
+//    string get_name();
 
 };
 

@@ -4,7 +4,6 @@
 
 
 #include <iostream>
-#include <cmath>
 #include "BinaryHeap.h"
 
 using namespace std;
@@ -36,7 +35,7 @@ void BinaryHeap::heapify_up(int index) {
     }
 }
 
-void BinaryHeap::pop_back() {
+void BinaryHeap::pop_front() {
     if (_heap.get_size() == 0) {
         cout << "Heap is empty" << endl;
         return;
@@ -49,11 +48,6 @@ void BinaryHeap::pop_back() {
 void BinaryHeap::push_back(int value) {
     _heap.push_back(value);
     heapify_up(_heap.get_size() - 1);
-}
-
-bool BinaryHeap::find_element() {
-    //TODO: implementation Ku
-    return false;
 }
 
 void BinaryHeap::print() {
@@ -74,6 +68,10 @@ void BinaryHeap::print(std::string prefix, int index, bool isLeft) {
 
 std::string BinaryHeap::get_name() {
     return "Binary_Heap";
+}
+
+bool BinaryHeap::find_element(int value) {
+    return _heap.find(value) != -1;
 }
 
 

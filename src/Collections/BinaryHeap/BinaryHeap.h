@@ -9,7 +9,7 @@
 #include <algorithm>
 #include "../Array/Array.h"
 
-class BinaryHeap : AbstractCollection {
+class BinaryHeap {
 private:
     Array _heap;
 
@@ -21,11 +21,11 @@ private:
 
 public:
 
-    void push_back(int value) override;
+    void push_back(int value);
 
-    void pop_back() override;
+    void pop_front();
 
-    bool find_element();
+    bool find_element(int value);
 
     void print();
 

@@ -7,6 +7,8 @@
 
 
 #include "../AbstractCollection.h"
+#include <string>
+using namespace std;
 
 class Array : public AbstractCollection {
     int* data;
@@ -39,7 +41,7 @@ public:
 
     void swap(int source_index, int destination_index);
 
-    std::string get_name();
+    string get_name();
 
     virtual ~Array();
 };

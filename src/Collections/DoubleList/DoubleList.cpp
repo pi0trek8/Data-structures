@@ -5,6 +5,7 @@
 #include <iostream>
 #include "DoubleList.h"
 #include "Node/DoubleListNode.h"
+#include <string>
 
 using namespace std;
 
@@ -291,8 +292,8 @@ int DoubleList::get_size() {
     return list_size;
 }
 
-std::string DoubleList::get_name() {
-    return "List";
-}
+//string DoubleList::get_name() {
+//    return "List";
+//}
 
 

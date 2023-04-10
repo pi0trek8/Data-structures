@@ -118,7 +118,9 @@ void RedBlackTree::push_back(int value) {
         _root = new_node;
         _root->color = Color::BLACK;
         return;
-    } else if (value < previous_to_node->value) {
+    }
+
+    if (value < previous_to_node->value) {
         previous_to_node->left_child = new_node;
     } else {
         previous_to_node->right_child = new_node;
@@ -130,6 +132,8 @@ void RedBlackTree::push_back(int value) {
     }
 
     this->balance_tree(new_node);
+    _root->color = Color::BLACK;
+
 }
 
 Node *RedBlackTree::get_uncle(Node *node) {
@@ -287,9 +291,11 @@ bool RedBlackTree::is_black(Node *node) {
 }
 
 void RedBlackTree::print() {
-    if (_root) {
+    if (_root != nullptr) {
         print_helper(this->_root, "", true, true);
+        return;
     }
+    cout << "Heap is empty!" << endl;
 }
 
 void RedBlackTree::print_helper(Node *node, std::string indent, bool isLast, bool isFirst) {
@@ -319,8 +325,8 @@ void RedBlackTree::print_helper(Node *node, std::string indent, bool isLast, boo
 int RedBlackTree::find(int value) {
     auto temporary_node = _root;
 
-    while(temporary_node != nullptr) {
-        if(temporary_node->value < value) {
+    while (temporary_node != nullptr) {
+        if (temporary_node->value < value) {
             temporary_node = temporary_node->right_child;
         } else if (temporary_node->value > value) {
             temporary_node = temporary_node->left_child;
