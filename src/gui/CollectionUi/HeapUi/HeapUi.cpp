@@ -39,7 +39,7 @@ void HeapUi::program_loop() {
                 Utils::clear_console();
                 std::cout << "Value: ";
                 int value = Utils::get_input();
-                bool isSuccess = heap->find_element(value);
+                bool isSuccess = heap->find(value);
                 std::cout << "Value " << value << (isSuccess ? "has been found." : "has not been found") << std::endl;
                 Utils::press_any_to_continue();
                 break;

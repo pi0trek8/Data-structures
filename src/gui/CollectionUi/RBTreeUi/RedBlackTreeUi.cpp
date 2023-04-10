@@ -30,7 +30,7 @@ void RedBlackTreeUi::program_loop() {
                 Utils::clear_console();
                 std::cout << "Value: ";
                 int value = Utils::get_input();
-                redBlackTree->remove(value);
+                redBlackTree->remove_element(value);
                 break;
             }
             case 3: {

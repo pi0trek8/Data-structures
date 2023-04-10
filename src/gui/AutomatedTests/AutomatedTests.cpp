@@ -4,6 +4,10 @@
 
 #include "AutomatedTests.h"
 #include "../Utils/Utils.h"
+#include "Structures/array/ArrayTests.h"
+#include "Structures/redBlackTree/RedBlackTreeTests.h"
+#include "Structures/heap/HeapTests.h"
+#include "Structures/list/ListTests.h"
 
 void AutomatedTests::program_loop() {
     bool exit_request = false;
@@ -14,16 +18,24 @@ void AutomatedTests::program_loop() {
 
         switch (input) {
             case 1: {
-
+                Utils::clear_console();
+                ArrayTests::program_loop();
+                break;
             }
             case 2: {
-
+                Utils::clear_console();
+                ListTests::program_loop();
+                break;
             }
             case 3: {
-
+                Utils::clear_console();
+                HeapTests::program_loop();
+                break;
             }
             case 4: {
-
+                Utils::clear_console();
+                RedBlackTreeTests::program_loop();
+                break;
             }
             case 5: {
                 exit_request = true;

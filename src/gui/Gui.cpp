@@ -11,6 +11,7 @@
 #include "CollectionUi/ListUi/ListUi.h"
 #include "CollectionUi/HeapUi/HeapUi.h"
 #include "CollectionUi/RBTreeUi/RedBlackTreeUi.h"
+#include "AutomatedTests/AutomatedTests.h"
 #include <iostream>
 
 void Gui::program_loop() {
@@ -24,7 +25,7 @@ void Gui::program_loop() {
         switch (program_input) {
             case 1: {
                 Utils::clear_console();
-//                run_autmated_tests();
+                AutomatedTests::program_loop();
                 break;
             }
             case 2: {
