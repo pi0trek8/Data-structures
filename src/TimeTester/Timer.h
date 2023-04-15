@@ -12,14 +12,13 @@ using namespace std;
 using namespace std::chrono;
 
 class Timer {
-public:
-    high_resolution_clock::time_point initialTime;
+private:
     high_resolution_clock::time_point endTime;
+    high_resolution_clock::time_point initialTime;
+public:
 
     void timeStart();
-
     void timeStop();
-
     long elapsedTime();
 };
 

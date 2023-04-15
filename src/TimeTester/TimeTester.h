@@ -45,7 +45,7 @@ template<class T>
 void TimeTester::test_get(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
-    T collection;
+    T *collection;
 
     FileWriter file;
     auto whole_time = 0;
@@ -59,13 +59,14 @@ void TimeTester::test_get(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.get(random_index);
+        collection->get(random_index);
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
         cout << test_number << " test is " << duration << endl;
 
-        file.write_to_file(collection.get_name() + "_get_", collection_size, duration);
+        file.write_to_file(collection->get_name() + "_get_", collection_size, duration);
+        delete collection;
     }
     cout << "Average time of 'get' operation is: " << whole_time / test_count << endl;
 }
@@ -74,7 +75,7 @@ template<class T>
 void TimeTester::test_find(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
-    T collection;
+    T *collection;
     FileWriter file;
     auto whole_time = 0;
     std::random_device randomDevice;
@@ -87,13 +88,14 @@ void TimeTester::test_find(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.find(random_value);
+        collection->find(random_value);
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
         cout << test_number << " test is " << duration << endl;
 
-        file.write_to_file(collection.get_name() + "_find_", collection_size, duration);
+        file.write_to_file(collection->get_name() + "_find_", collection_size, duration);
+        delete collection;
     }
     cout << "Average time of 'find' operation is: " << whole_time / test_count << endl;
 }
@@ -102,7 +104,7 @@ template<class T>
 void TimeTester::test_remove(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
-    T collection;
+    T *collection;
     FileWriter file;
     auto whole_time = 0;
     std::random_device randomDevice;
@@ -115,13 +117,14 @@ void TimeTester::test_remove(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.remove(random_index);
+        collection->remove(random_index);
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
         cout << test_number << " test is " << duration << endl;
 
-        file.write_to_file(collection.get_name() + "_remove_", collection_size, duration);
+        file.write_to_file(collection->get_name() + "_remove_", collection_size, duration);
+        delete collection;
     }
     cout << "Average time of 'remove_element' operation is: " << whole_time / test_count << endl;
 }
@@ -130,7 +133,7 @@ template<class T>
 void TimeTester::test_pop_front(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
-    T collection;
+    T *collection;
     FileWriter file;
     auto whole_time = 0;
 
@@ -138,13 +141,14 @@ void TimeTester::test_pop_front(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.pop_front();
+        collection->pop_front();
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
         cout << test_number << " test is " << duration << endl;
 
-        file.write_to_file(collection.get_name() + "_find_", collection_size, duration);
+        file.write_to_file(collection->get_name() + "_find_", collection_size, duration);
+        delete collection;
     }
     cout << "Average time of 'pop_front' operation is: " << whole_time / test_count << endl;
 }
@@ -153,7 +157,7 @@ template<class T>
 void TimeTester::test_insert(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
-    T collection;
+    T *collection;
     FileWriter file;
     auto whole_time = 0;
     std::random_device randomDevice;
@@ -168,13 +172,14 @@ void TimeTester::test_insert(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.insert(random_value, random_index);
+        collection->insert(random_index, random_value);
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
         cout << test_number << " test is " << duration << endl;
 
-        file.write_to_file(collection.get_name() + "_insert_", collection_size, duration);
+        file.write_to_file(collection->get_name() + "_insert_", collection_size, duration);
+        delete collection;
     }
     cout << "Average time of 'insert' operation is: " << whole_time / test_count << endl;
 }
@@ -183,7 +188,7 @@ template<class T>
 void TimeTester::test_push_front(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
-    T collection;
+    T *collection;
     FileWriter file;
     auto whole_time = 0;
     std::random_device randomDevice;
@@ -196,13 +201,14 @@ void TimeTester::test_push_front(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.push_front(random_value);
+        collection->push_front(random_value);
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
         cout << test_number << " test is " << duration << endl;
 
-        file.write_to_file(collection.get_name() + "_push_front_", collection_size, duration);
+        file.write_to_file(collection->get_name() + "_push_front_", collection_size, duration);
+        delete collection;
     }
     cout << "Average time of 'push_front' operation is: " << whole_time / test_count << endl;
 }
@@ -211,7 +217,7 @@ template<class T>
 void TimeTester::test_pop_back(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
-    T collection;
+    T *collection;
     FileWriter file;
     auto whole_time = 0;
 
@@ -219,13 +225,14 @@ void TimeTester::test_pop_back(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.pop_front();
+        collection->pop_front();
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
         cout << test_number << " test is " << duration << endl;
 
-        file.write_to_file(collection.get_name() + "_insert_", collection_size, duration);
+        file.write_to_file(collection->get_name() + "_insert_", collection_size, duration);
+        delete collection;
     }
     cout << "Average time of 'pop_front' operation is: " << whole_time / test_count << endl;
 }
@@ -234,7 +241,7 @@ template<class T>
 void TimeTester::test_push_back(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
-    T collection;
+    T *collection;
     FileWriter file;
     auto whole_time = 0;
     std::random_device randomDevice;
@@ -247,13 +254,14 @@ void TimeTester::test_push_back(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.push_back(random_value);
+        collection->push_back(random_value);
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
         cout << test_number << " test is " << duration << endl;
 
-        file.write_to_file(collection.get_name() + "_push_back_", collection_size, duration);
+        file.write_to_file(collection->get_name() + "_push_back_", collection_size, duration);
+        delete collection;
     }
     cout << "Average time of 'push_back' operation is: " << whole_time / test_count << endl;
 }
@@ -262,7 +270,7 @@ template<class T>
 void TimeTester::test_remove_element(int collection_size, int test_count) {
     RandomGenerator random_generator;
     Timer timer;
-    T collection;
+    T *collection;
     FileWriter file;
     auto whole_time = 0;
     std::random_device randomDevice;
@@ -275,13 +283,14 @@ void TimeTester::test_remove_element(int collection_size, int test_count) {
         collection = random_generator.fill_collection<T>(collection_size);
 
         timer.timeStart();
-        collection.remove_element(random_value);
+        collection->remove_element(random_value);
         timer.timeStop();
         auto duration = timer.elapsedTime();
         whole_time += duration;
         cout << test_number << " test is " << duration << endl;
 
-        file.write_to_file(collection.get_name() + "_push_back_", collection_size, duration);
+        file.write_to_file(collection->get_name() + "_push_back_", collection_size, duration);
+        delete collection;
     }
     cout << "Average time of 'push_back' operation is: " << whole_time / test_count << endl;
 }

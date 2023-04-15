@@ -322,7 +322,7 @@ void RedBlackTree::print_helper(Node *node, std::string indent, bool isLast, boo
     }
 }
 
-int RedBlackTree::find(int value) {
+bool RedBlackTree::find(int value) {
     auto temporary_node = _root;
 
     while (temporary_node != nullptr) {
@@ -331,11 +331,11 @@ int RedBlackTree::find(int value) {
         } else if (temporary_node->value > value) {
             temporary_node = temporary_node->left_child;
         } else {
-            return temporary_node->value;
+            return true;
         }
     }
     cout << "value: " << value << " has not been found! Returning -1" << endl;
-    return -1;
+    return false;
 }
 
 string RedBlackTree::get_name() {

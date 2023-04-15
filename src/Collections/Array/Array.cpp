@@ -30,34 +30,22 @@ int Array::get_size() {
 }
 
 void Array::insert(int index, int value) {
-    if (data == nullptr) {
-        data = new int[++size];
-        data[0] = value;
-        return;
-    }
-
     if (index < 0 || index > size) {
         cout << "Index out of bounds" << endl;
         return;
     }
-
-    int *temporaryArray = data;
-    data = new int[++size];
-
-
-    for (int i = 0; i < size; i++) {
-        if (i == index) {
-            data[i] = value;
-            continue;
-        } else if (i < index) {
-            data[i] = temporaryArray[i];
-            continue;
-        }
-
-        data[i] = temporaryArray[i - 1];
+    int *temporaryArray = new int[size + 1];
+    for (int i = 0; i < index; i++) {
+        temporaryArray[i] = data[i];
     }
+    temporaryArray[index] = value;
+    for (int i = index + 1; i < size + 1; i++) {
+        temporaryArray[i] = data[i - 1];
+    }
+    size++;
+    delete[] data;
+    data = temporaryArray;
 
-    delete[] temporaryArray;
 }
 
 void Array::push_front(int value) {

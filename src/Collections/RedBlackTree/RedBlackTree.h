@@ -46,7 +46,7 @@ public:
 
     void print();
 
-    int find(int value);
+    bool find(int value);
 
     string get_name();
 };

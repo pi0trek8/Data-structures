@@ -14,11 +14,13 @@ using namespace std;
 class DoubleList : public AbstractCollection {
 
 private:
-    DoubleListNode *head = nullptr;
-    DoubleListNode *tail = nullptr;
-    int list_size = 0;
+    DoubleListNode *head;
+    DoubleListNode *tail;
+    int list_size;
 
 public:
+    DoubleList();
+
     void push_back(int element) override;
 
     void push_front(int element) override;

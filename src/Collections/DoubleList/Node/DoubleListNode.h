@@ -11,7 +11,6 @@ public:
     DoubleListNode(int value);
 
     DoubleListNode();
-
     int value;
     DoubleListNode *previous_node;
     DoubleListNode *next_node;

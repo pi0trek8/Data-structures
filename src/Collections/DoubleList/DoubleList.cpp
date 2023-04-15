@@ -295,4 +295,10 @@ string DoubleList::get_name() {
     return "List";
 }
 
+DoubleList::DoubleList() {
+    this->list_size = 0;
+    this->head = nullptr;
+    this->tail = nullptr;
+}
+
 

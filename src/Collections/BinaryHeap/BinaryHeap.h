@@ -23,6 +23,8 @@ public:
 
     void push_back(int value);
 
+    void remove(int value);
+
     void pop_front();
 
     bool find(int value);
