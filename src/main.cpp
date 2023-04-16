@@ -11,9 +11,10 @@ using namespace std;
 
 int main() {
 
+    Array array;
+    array.pop_front();
 
-
-    Gui::program_loop();
+//    Gui::program_loop();
 
     return 0;
 }

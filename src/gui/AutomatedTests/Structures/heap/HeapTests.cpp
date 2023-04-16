@@ -69,8 +69,9 @@ void HeapTests::program_loop() {
 
 void HeapTests::menu() {
     std::cout << "1. TEST - add" << std::endl;
-    std::cout << "2. TEST - remove_element from top" << std::endl;
-    std::cout << "3. TEST - remove_element value NOT IMPLEMENTED!!!!!!" << std::endl;
+    std::cout << "2. TEST - remove_element value NOT IMPLEMENTED!!!!!!" << std::endl;
+    std::cout << "3. TEST - remove_element from top"
+                 "" << std::endl;
     std::cout << "4. TEST - find value" << std::endl;
     std::cout << "5. Go back" << std::endl;
     std::cout << "Choice (1-7): ";
