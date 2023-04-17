@@ -9,6 +9,7 @@
 #include "RandomGenerator.h"
 #include "Timer.h"
 #include "../FileWriter/FileWriter.h"
+#include "../Collections/RedBlackTree/RedBlackTree.h"
 
 class TimeTester {
 
@@ -162,7 +163,7 @@ void TimeTester::test_insert(int collection_size, int test_count) {
     auto whole_time = 0;
     std::random_device randomDevice;
     std::mt19937 generator(randomDevice());
-    std::uniform_int_distribution<int> random_value_distribution(-1000, 1000);
+    std::uniform_int_distribution<int> random_value_distribution(-1000000000, 1000000000);
     std::uniform_int_distribution<int> random_index_distribution(0, collection_size - 1);
 
     for (int test_number = 0; test_number < test_count; test_number++) {
@@ -193,7 +194,7 @@ void TimeTester::test_push_front(int collection_size, int test_count) {
     auto whole_time = 0;
     std::random_device randomDevice;
     std::mt19937 generator(randomDevice());
-    std::uniform_int_distribution<int> random_value_distribution(-1000, 1000);
+    std::uniform_int_distribution<int> random_value_distribution(-1000000000, 1000000000);
 
     for (int test_number = 0; test_number < test_count; test_number++) {
         int random_value = random_value_distribution(generator);
@@ -246,7 +247,7 @@ void TimeTester::test_push_back(int collection_size, int test_count) {
     auto whole_time = 0;
     std::random_device randomDevice;
     std::mt19937 generator(randomDevice());
-    std::uniform_int_distribution<int> random_value_distribution(-1000, 1000);
+    std::uniform_int_distribution<int> random_value_distribution(-1000000000, 1000000000);
 
     for (int test_number = 0; test_number < test_count; test_number++) {
         int random_value = random_value_distribution(generator);
@@ -275,7 +276,7 @@ void TimeTester::test_remove_element(int collection_size, int test_count) {
     auto whole_time = 0;
     std::random_device randomDevice;
     std::mt19937 generator(randomDevice());
-    std::uniform_int_distribution<int> random_value_distribution(-1000, 1000);
+    std::uniform_int_distribution<int> random_value_distribution(-1000000000, 1000000000);
 
     for (int test_number = 0; test_number < test_count; test_number++) {
         int random_value = random_value_distribution(generator);

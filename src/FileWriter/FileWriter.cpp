@@ -5,7 +5,7 @@
 #include "FileWriter.h"
 
 void FileWriter::write_to_file(std::string file_name, int elements_number, long argument) {
-    file_name += std::to_string(elements_number) + ".csv";
+    file_name += + ".csv";
 
     std::cout<<"writing to: " << file_name << std::endl;
 

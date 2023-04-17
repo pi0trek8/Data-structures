@@ -29,7 +29,7 @@ int Array::get_size() {
     return size;
 }
 
-void Array::insert(int index, int value) {
+void Array::insert( int value, int index) {
     if (index < 0 || index > size) {
         cout << "Index out of bounds" << endl;
         return;

@@ -8,16 +8,17 @@
 
 #include "../AbstractCollection.h"
 #include <string>
+
 using namespace std;
 
 class Array : public AbstractCollection {
-    int* data;
+    int *data;
     int size;
 
 public:
     Array();
 
-    void insert(int index, int value) override;
+    void insert(int value, int index) override;
 
     void push_front(int value) override;
 
