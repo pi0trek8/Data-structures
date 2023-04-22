@@ -35,7 +35,7 @@ public:
 
     void clear() override;
 
-    int find(int element) override;
+    bool find(int element) override;
 
     void print() override;
 

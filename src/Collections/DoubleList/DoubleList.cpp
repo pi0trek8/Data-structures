@@ -10,6 +10,7 @@ using namespace std;
 
 
 void DoubleList::push_back(int element) {
+    // checking if head has been initialized
     if (head == nullptr) {
         head = new DoubleListNode(element);
         tail = head;
@@ -40,12 +41,15 @@ void DoubleList::push_front(int element) {
 }
 
 void DoubleList::insert(int element, int index) {
+    // check if index is not out of bounds
     if (index < 0 || index > list_size) {
         cerr << "index: " << index << " is out of bounds for length: " << list_size << endl;
         return;
     }
+    // initialize new node
     auto *new_node = new DoubleListNode(element);
 
+    // first case index == 0
     if (index == 0) {
         auto temporary_node = head;
         head = new_node;
@@ -55,6 +59,7 @@ void DoubleList::insert(int element, int index) {
         return;
     }
 
+    // second case new node as last element
     if (index == list_size) {
         auto temporary_node = tail;
         tail = new_node;
@@ -66,7 +71,9 @@ void DoubleList::insert(int element, int index) {
 
     DoubleListNode *temporary_node;
 
-    if (index < list_size) {
+    // check if index is in first or second half
+    // and based on that starting iterating from first or last node
+    if (index < list_size / 2) {
         temporary_node = head;
         for (int i = 0; i < index - 1; i++) {
             temporary_node = temporary_node->next_node;
@@ -79,10 +86,11 @@ void DoubleList::insert(int element, int index) {
     }
 
     auto *node_to_slide = temporary_node->next_node;
-
+    // creating hierarchy with new node
     temporary_node->next_node = new_node;
     new_node->previous_node = temporary_node;
     if (node_to_slide != nullptr) {
+        // sliding node and keeping hierarchy
         new_node->next_node = node_to_slide;
         node_to_slide->previous_node = new_node;
     }
@@ -90,24 +98,29 @@ void DoubleList::insert(int element, int index) {
 }
 
 void DoubleList::remove(int index) {
+    // check if index is not out of bounds
     if (index < 0 || index >= list_size) {
         cerr << "index: " << index << " is out of bounds for length: " << list_size << endl;
         return;
     }
-
+    // first case
     if (index == 0) {
         pop_front();
         return;
     }
-
+    // second case
     if (index == list_size - 1) {
         pop_back();
         return;
     }
 
+    // default case:
+
     DoubleListNode *temporary_node;
 
-    if (index < list_size) {
+    // check if index is in first or second half
+    // and based on that starting iterating from first or last node
+    if (index < list_size / 2) {
         temporary_node = head;
         for (int i = 0; i < index - 1; i++) {
             temporary_node = temporary_node->next_node;
@@ -123,7 +136,9 @@ void DoubleList::remove(int index) {
 
     delete temporary_node->next_node;
 
+    // creating hierarchy with new node
     if (node_to_slide == nullptr) {
+        // sliding node and keeping hierarchy
         temporary_node->next_node = nullptr;
         return;
     }
@@ -133,6 +148,7 @@ void DoubleList::remove(int index) {
 }
 
 void DoubleList::pop_front() {
+    // first and only element
     if (list_size == 1) {
         auto temp_node = head;
         tail = nullptr;
@@ -141,6 +157,7 @@ void DoubleList::pop_front() {
         list_size--;
         return;
     }
+    // default element
     auto *temporary_head = head;
     head->next_node->previous_node = nullptr;
     head = head->next_node;
@@ -149,6 +166,7 @@ void DoubleList::pop_front() {
 }
 
 void DoubleList::pop_back() {
+    //last and only element
     if (list_size == 1) {
         auto temp_node = head;
         head = nullptr;
@@ -157,6 +175,7 @@ void DoubleList::pop_back() {
         list_size--;
         return;
     }
+    //default case
     DoubleListNode *temporary_node = tail;
 
     temporary_node->previous_node->next_node = nullptr;
@@ -166,6 +185,7 @@ void DoubleList::pop_back() {
 }
 
 void DoubleList::clear() {
+    // iterating throughout list and removing node objects one by one
     auto *temporary_node = head;
     DoubleListNode *node_to_delete;
     for (int i = 0; i < list_size; i++) {
@@ -173,25 +193,25 @@ void DoubleList::clear() {
         temporary_node = temporary_node->next_node;
         delete node_to_delete;
     }
+    // deleting last node
     delete temporary_node;
+
+    // reinitializing pointers
     head = nullptr;
     tail = nullptr;
     list_size = 0;
 }
 
-int DoubleList::find(int element) {
-
+bool DoubleList::find(int element) {
+    // searching through structure to meet search criteria
     DoubleListNode *temporary_node = head;
-    int index = 0;
     while (temporary_node != nullptr) {
         if (temporary_node->value == element) {
-            return index;
+            return true;
         }
-        index++;
         temporary_node = temporary_node->next_node;
     }
-    cout << "value: " << element << " has not been found! Returning index -1" << endl;
-    return -1;
+    return false;
 }
 
 void DoubleList::print() {
@@ -224,7 +244,7 @@ void DoubleList::swap(int first_index, int second_index) {
         return;
     }
 
-    // Find the nodes at the first_index-th and j-th positions
+    // Find the nodes at the first_index-th and last_index-th positions
     DoubleListNode *previous_node_first_index = nullptr;
     DoubleListNode *node_first_index = head;
     for (int i = 0; i < first_index; i++) {
@@ -272,7 +292,8 @@ int DoubleList::get(int index) {
     }
     DoubleListNode *temporary_node;
 
-    if (index < list_size) {
+    // iterating based on index value: from beginning, from end
+    if (index < list_size / 2) {
         temporary_node = head;
         for (int i = 0; i < index; i++) {
             temporary_node = temporary_node->next_node;
@@ -292,10 +313,12 @@ int DoubleList::get_size() {
 }
 
 string DoubleList::get_name() {
+    // utils method in order to distinguish structure object without reflection in C++
     return "List";
 }
 
 DoubleList::DoubleList() {
+    // initializing pointers with default values
     this->list_size = 0;
     this->head = nullptr;
     this->tail = nullptr;

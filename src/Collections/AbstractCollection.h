@@ -22,7 +22,7 @@ public:
 
     virtual void clear() = 0;
 
-    virtual int find(int element) = 0;
+    virtual bool find(int element) = 0;
 
     virtual void print() = 0;
 };

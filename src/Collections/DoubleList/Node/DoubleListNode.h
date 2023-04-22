@@ -8,9 +8,8 @@
 
 class DoubleListNode {
 public:
-    DoubleListNode(int value);
+    explicit DoubleListNode(int value);
 
-    DoubleListNode();
     int value;
     DoubleListNode *previous_node;
     DoubleListNode *next_node;
