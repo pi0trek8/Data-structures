@@ -12,7 +12,7 @@
 class FileWriter {
 
 public:
-    void write_to_file(std::string file_name, int elements_number, long argument);
+    void write_to_file(std::string file_name, int elements_number, float argument);
 };
 
 

@@ -19,7 +19,7 @@ public:
 
     void timeStart();
     void timeStop();
-    long elapsedTime();
+    long long elapsedTime();
 };
 
 

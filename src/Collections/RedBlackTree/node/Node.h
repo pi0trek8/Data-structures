@@ -17,6 +17,8 @@ public:
 
     explicit Node(int value);
 
+    Node();
+
     virtual ~Node();
 };
 

@@ -13,14 +13,14 @@ using namespace std;
 class RandomGenerator {
 public:
     template<class T>
-    T* fill_collection(int collection_size);
+    T *fill_collection(int collection_size);
 };
 
 template<class T>
-T* RandomGenerator::fill_collection(int collection_size) {
+T *RandomGenerator::fill_collection(int collection_size) {
     random_device randomDevice;
     mt19937 generator(randomDevice());
-    uniform_int_distribution<int> random_value_distribution(-1000000000, 1000000000);
+    uniform_int_distribution<int> random_value_distribution(0, 1000);
     uniform_int_distribution<int> random_index_distribution(0, collection_size - 1);
     T *collection = new T();
 
@@ -29,7 +29,7 @@ T* RandomGenerator::fill_collection(int collection_size) {
         rand_array[i] = random_value_distribution(generator);
     }
 
-    for(int number: rand_array) {
+    for (int number: rand_array) {
         collection->push_back(number);
     }
 

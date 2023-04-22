@@ -11,4 +11,12 @@ Node::Node(int value) : value(value) {
     this->color = Color::RED;
 }
 
+Node::Node() {
+    this->value = 0;
+    color = Color::d_black;
+    this->left_child = nullptr;
+    this->right_child = nullptr;
+    this->parent = nullptr;
+}
+
 Node::~Node() = default;

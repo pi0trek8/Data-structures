@@ -20,11 +20,11 @@ private:
 
     void rotate_right(Node *node_to_rotate);
 
-    void balance_tree(Node *node);
+    void fix_insert(Node *temporaryNode);
 
-    void print_helper(Node *node, std::string indent, bool isLast, bool isFirst);
+    void print_helper(Node *node, string indent, bool isLast, bool isFirst);
 
-    Node *delete_node(Node *node);
+    Node *delete_node(Node* node);
 
     void replace_child(Node *old_child, Node *new_child);
 
@@ -35,6 +35,10 @@ private:
     Node *get_sibling(Node *node);
 
     bool is_black(Node *node);
+
+    Color getColor(Node *node);
+
+    void setColor(Node *node, Color color);
 
 public:
 

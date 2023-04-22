@@ -8,6 +8,6 @@ void Timer::timeStop() {
     endTime = high_resolution_clock::now();
 }
 
-long Timer::elapsedTime() {
+long long Timer::elapsedTime() {
     return duration_cast<nanoseconds>(endTime - initialTime).count();
 }
