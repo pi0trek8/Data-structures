@@ -32,6 +32,7 @@ void Gui::program_loop() {
                 Utils::clear_console();
                 bool go_back_request = false;
                 while (!go_back_request) {
+                    Utils::clear_console();
                     collection_menu();
                     int input = Utils::get_input();
                     switch (input) {

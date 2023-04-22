@@ -31,6 +31,10 @@ int Array::get_size() {
 }
 
 void Array::insert(int value, int index) {
+    if(size == 0) {
+        push_front(value);
+        return;
+    }
     // check whether index is out of bound
     if (index < 0 || index > size) {
         cout << "Index out of bounds" << endl;

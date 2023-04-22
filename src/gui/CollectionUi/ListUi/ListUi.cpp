@@ -62,8 +62,8 @@ void ListUi::program_loop() {
                 std::cout << "Value: ";
                 int value = Utils::get_input();
                 std::cout << (
-                        list->find(value) != -1 ?
-                        "Value " + to_string(value) + " has been found." : ""
+                        list->find(value) ?
+                        "Value " + to_string(value) + " has been found." : " has not been found."
                 ) << std::endl;
                 Utils::press_any_to_continue();
                 break;

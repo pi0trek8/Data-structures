@@ -24,7 +24,7 @@ void ArrayUi::program_loop() {
                 int value = Utils::get_input();
                 std::cout << "Index: ";
                 int index = Utils::get_input();
-                array->insert(index, value);
+                array->insert(value, index);
                 break;
             }
             case 2: {
@@ -46,16 +46,19 @@ void ArrayUi::program_loop() {
                 std::cout << "Index: ";
                 int index = Utils::get_input();
                 array->remove(index);
+                Utils::press_any_to_continue();
                 break;
             }
             case 5: {
                 Utils::clear_console();
                 array->pop_front();
+                Utils::press_any_to_continue();
                 break;
             }
             case 6: {
                 Utils::clear_console();
                 array->pop_back();
+                Utils::press_any_to_continue();
                 break;
             }
             case 7: {
@@ -68,7 +71,7 @@ void ArrayUi::program_loop() {
             }
             case 8: {
                 Utils::clear_console();
-                std::cout << "Value: ";
+                std::cout << "Will trigger exception. Index: ";
                 int index = Utils::get_input();
                 std::cout << "Found value: ";
                 std::cout << array->get(index) << std::endl;

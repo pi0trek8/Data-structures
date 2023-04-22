@@ -148,6 +148,10 @@ void DoubleList::remove(int index) {
 }
 
 void DoubleList::pop_front() {
+    if (list_size == 0) {
+        cout << "list is empty" << endl;
+        return;
+    }
     // first and only element
     if (list_size == 1) {
         auto temp_node = head;
@@ -166,6 +170,10 @@ void DoubleList::pop_front() {
 }
 
 void DoubleList::pop_back() {
+    if (list_size == 0) {
+        cout << "list is empty" << endl;
+        return;
+    }
     //last and only element
     if (list_size == 1) {
         auto temp_node = head;
@@ -232,12 +240,9 @@ void DoubleList::print() {
 
 void DoubleList::swap(int first_index, int second_index) {
 
-    if (first_index < 0 || first_index >= list_size) {
-        cerr << "index: " << first_index << " is out of bounds for length: " << list_size << endl;
-    }
-
-    if (second_index >= list_size || second_index < 0) {
-        cerr << "index: " << second_index << " is out of bounds for length: " << list_size << endl;
+    if (first_index < 0 || first_index >= list_size || second_index >= list_size || second_index < 0) {
+        cout << "Index out of bounds exception" << endl;
+        return;
     }
 
     if (first_index == second_index) {

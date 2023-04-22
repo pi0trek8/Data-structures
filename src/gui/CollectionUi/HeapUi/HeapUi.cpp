@@ -30,27 +30,23 @@ void HeapUi::program_loop() {
                 heap->pop_front();
                 break;
             }
+
             case 3: {
-                Utils::clear_console();
-                //TODO: implement remove(value)
-                break;
-            }
-            case 4: {
                 Utils::clear_console();
                 std::cout << "Value: ";
                 int value = Utils::get_input();
                 bool isSuccess = heap->find(value);
-                std::cout << "Value " << value << (isSuccess ? "has been found." : "has not been found") << std::endl;
+                std::cout << "Value " << value << (isSuccess ? " has been found." : " has not been found") << std::endl;
                 Utils::press_any_to_continue();
                 break;
             }
-            case 5: {
+            case 4: {
                 Utils::clear_console();
                 heap->print();
                 Utils::press_any_to_continue();
                 break;
             }
-            case 6: {
+            case 5: {
                 FileReader fileReader;
                 Utils::clear_console();
                 std::cout << "Enter file path: ";
@@ -61,7 +57,7 @@ void HeapUi::program_loop() {
                 heap = fileReader.read_collection_from_file<BinaryHeap>(file_name);
                 break;
             }
-            case 7: {
+            case 6: {
                 Utils::clear_console();
                 go_back_request = true;
                 break;
@@ -75,10 +71,9 @@ void HeapUi::program_loop() {
 void HeapUi::show_menu() {
     std::cout << "1. Add" << std::endl;
     std::cout << "2. Remove from top" << std::endl;
-    std::cout << "3. Remove value NOT IMPLEMENTED!!!!!!" << std::endl;
-    std::cout << "4. Find value" << std::endl;
-    std::cout << "5. Display" << std::endl;
-    std::cout << "6. Read collection from file" << std::endl;
-    std::cout << "7. Go back" << std::endl;
-    std::cout << "Choice (1-7): ";
+    std::cout << "3. Find value" << std::endl;
+    std::cout << "4. Display" << std::endl;
+    std::cout << "5. Read collection from file" << std::endl;
+    std::cout << "6. Go back" << std::endl;
+    std::cout << "Choice (1-6): ";
 }
