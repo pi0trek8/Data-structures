@@ -38,7 +38,7 @@ public:
 
     int get(int index);
 
-    int find(int element) override;
+    bool find(int element) override;
 
     void swap(int source_index, int destination_index);
 

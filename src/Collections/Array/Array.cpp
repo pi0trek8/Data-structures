@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Array.h"
 #include <string>
+
 using namespace std;
 
 Array::Array() {
@@ -18,7 +19,7 @@ void Array::print() {
         cout << "Array is empty" << endl;
         return;
     }
-
+    // displaying structure element by element
     for (int i = 0; i < size; i++) {
         cout << data[i] << " ";
     }
@@ -29,19 +30,26 @@ int Array::get_size() {
     return size;
 }
 
-void Array::insert( int value, int index) {
+void Array::insert(int value, int index) {
+    // check whether index is out of bound
     if (index < 0 || index > size) {
         cout << "Index out of bounds" << endl;
         return;
     }
     int *temporaryArray = new int[size + 1];
+    // copying first half to memory block
     for (int i = 0; i < index; i++) {
         temporaryArray[i] = data[i];
     }
+    //adding new value
     temporaryArray[index] = value;
+
+    //copying rest of array
     for (int i = index + 1; i < size + 1; i++) {
         temporaryArray[i] = data[i - 1];
     }
+
+    //increasing size and resolving previous memory block
     size++;
     delete[] data;
     data = temporaryArray;
@@ -49,13 +57,15 @@ void Array::insert( int value, int index) {
 }
 
 void Array::push_front(int value) {
+    //check if pointer has been initialize with 'new keyword
     if (data == nullptr) {
         data = new int[++size];
         data[0] = value;
         return;
     }
     int *temporaryArray = data;
-
+    //initializing new memory block
+    //copying all values with new one on the first index
     data = new int[++size];
     data[0] = value;
 
@@ -85,24 +95,26 @@ void Array::push_back(int value) {
 }
 
 void Array::remove(int index) {
+    // not initialized array
     if (data == nullptr) {
         cout << "Array is empty" << endl;
         return;
     }
-
+    // out of bounds exception
     if (index < 0 || index > size) {
         cout << "Index out of bounds" << endl;
         return;
     }
-
+    //sliding array in order to omit unwanted value
     for (int i = index; i < size - 1; i++) {
         data[i] = data[i + 1];
     }
 
     int *temporaryArray = data;
-
+    //decreasing size and initializing new mem block
     data = new int[--size];
 
+    //copying values to new smaller block
     for (int i = 0; i < size; i++) {
         data[i] = temporaryArray[i];
     }
@@ -111,12 +123,13 @@ void Array::remove(int index) {
 }
 
 void Array::pop_back() {
+    // if memory block has been initialized
     if (data == nullptr) {
         cout << "Array is empty" << endl;
         return;
     }
     int *temporaryArray = data;
-
+    //decreasing size and removing last element by not copying it to new block
     data = new int[--size];
     for (int i = 0; i < size; i++) {
         data[i] = temporaryArray[i];
@@ -125,12 +138,13 @@ void Array::pop_back() {
 }
 
 void Array::pop_front() {
+    //if is initialized
     if (data == nullptr) {
         cout << "Array is empty" << endl;
         return;
     }
     int *temporaryArray = data;
-
+    //decreasing size and removing first element by not copying it to new block
     data = new int[--size];
     for (int i = 0; i < size; i++) {
         data[i] = temporaryArray[i + 1];
@@ -143,32 +157,45 @@ void Array::swap(int source_index, int destination_index) {
         cout << "Array is empty" << endl;
         return;
     }
+    if (source_index < 0 ||
+        source_index >= size ||
+        destination_index < 0 ||
+        destination_index >= size) {
+        cout << "Array out of bound exception !!!" << endl;
+        return;
+    }
 
+
+    //swapping to values
     int temporaryValue = data[source_index];
     data[source_index] = data[destination_index];
     data[destination_index] = temporaryValue;
 }
 
 Array::~Array() {
+    //resolving mem block
     delete[] data;
 }
 
 void Array::clear() {
+    //removing memory block and reinitializing pointer
     delete[] data;
     data = nullptr;
     size = 0;
 }
 
-int Array::find(int element) {
-    for(int i = 0; i < size - 1; i ++) {
-        if(data[i] == element) {
-            return i;
+bool Array::find(int element) {
+    // searching value in structure.
+    for (int i = 0; i < size - 1; i++) {
+        if (data[i] == element) {
+            return true;
         }
     }
-    return -1;
+    return false;
 }
 
 int Array::get(int index) {
+    // return element by index
     if (index < 0 || index >= size) {
         throw invalid_argument("index: " + to_string(index) + " is out of bounds for length: " + to_string(size));
     }
@@ -176,6 +203,7 @@ int Array::get(int index) {
 }
 
 string Array::get_name() {
+    // utils method in order to distinguish structure object without reflection in C++
     return "Array";
 }
 

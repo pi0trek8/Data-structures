@@ -38,8 +38,8 @@ void RedBlackTreeUi::program_loop() {
                 std::cout << "Value: ";
                 int value = Utils::get_input();
                 std::cout << (
-                        redBlackTree->find(value) != -1 ?
-                        "Value has been found." : ""
+                        redBlackTree->find(value) ?
+                        "Value has been found." : "Value has not been found"
                 ) << std::endl;
                 Utils::press_any_to_continue();
                 break;
