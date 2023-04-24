@@ -62,7 +62,7 @@ void Array::insert(int value, int index) {
 
 void Array::push_front(int value) {
     //check if pointer has been initialize with 'new keyword
-    if (data == nullptr) {
+    if (size == 0) {
         data = new int[++size];
         data[0] = value;
         return;
@@ -81,7 +81,8 @@ void Array::push_front(int value) {
 }
 
 void Array::push_back(int value) {
-    if (data == nullptr) {
+    if (size == 0) {
+        delete[] data;
         data = new int[++size];
         data[0] = value;
         return;
@@ -100,7 +101,7 @@ void Array::push_back(int value) {
 
 void Array::remove(int index) {
     // not initialized array
-    if (data == nullptr) {
+    if (size == 0) {
         cout << "Array is empty" << endl;
         return;
     }
@@ -128,7 +129,7 @@ void Array::remove(int index) {
 
 void Array::pop_back() {
     // if memory block has been initialized
-    if (data == nullptr) {
+    if (size == 0) {
         cout << "Array is empty" << endl;
         return;
     }
@@ -143,7 +144,7 @@ void Array::pop_back() {
 
 void Array::pop_front() {
     //if is initialized
-    if (data == nullptr) {
+    if (size == 0) {
         cout << "Array is empty" << endl;
         return;
     }
@@ -157,7 +158,7 @@ void Array::pop_front() {
 }
 
 void Array::swap(int source_index, int destination_index) {
-    if (data == nullptr) {
+    if (size == 0) {
         cout << "Array is empty" << endl;
         return;
     }
@@ -190,7 +191,7 @@ void Array::clear() {
 
 bool Array::find(int element) {
     // searching value in structure.
-    for (int i = 0; i < size - 1; i++) {
+    for (int i = 0; i < size; i++) {
         if (data[i] == element) {
             return true;
         }

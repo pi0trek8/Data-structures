@@ -41,6 +41,11 @@ void DoubleList::push_front(int element) {
 }
 
 void DoubleList::insert(int element, int index) {
+    if(list_size == 0) {
+        push_front(element);
+        return;
+    }
+
     // check if index is not out of bounds
     if (index < 0 || index > list_size) {
         cerr << "index: " << index << " is out of bounds for length: " << list_size << endl;

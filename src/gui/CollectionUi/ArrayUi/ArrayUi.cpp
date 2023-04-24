@@ -65,13 +65,13 @@ void ArrayUi::program_loop() {
                 Utils::clear_console();
                 std::cout << "Value: ";
                 int value = Utils::get_input();
-                std::cout << "Index of founded node: ";
-                std::cout << array->find(value) << std::endl;
+                std::cout << (array->find(value) ? "Value has been found" : "Value has not been found") << std::endl;
+                Utils::press_any_to_continue();
                 break;
             }
             case 8: {
                 Utils::clear_console();
-                std::cout << "Will trigger exception. Index: ";
+                std::cout << "Wrong index will trigger exception. Index: ";
                 int index = Utils::get_input();
                 std::cout << "Found value: ";
                 std::cout << array->get(index) << std::endl;
@@ -85,6 +85,7 @@ void ArrayUi::program_loop() {
                 std::cout << "Second index: ";
                 int index2 = Utils::get_input();
                 array->swap(index1, index2);
+                Utils::press_any_to_continue();
                 break;
             }
             case 10: {
@@ -105,6 +106,7 @@ void ArrayUi::program_loop() {
                 break;
             }
             case 12: {
+                delete array;
                 go_back_request = true;
                 break;
             }

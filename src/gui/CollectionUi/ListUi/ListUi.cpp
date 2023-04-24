@@ -63,14 +63,14 @@ void ListUi::program_loop() {
                 int value = Utils::get_input();
                 std::cout << (
                         list->find(value) ?
-                        "Value " + to_string(value) + " has been found." : " has not been found."
+                        "Value " + to_string(value) + " has been found." : "Value " + to_string(value) + " has not been found."
                 ) << std::endl;
                 Utils::press_any_to_continue();
                 break;
             }
             case 8: {
                 Utils::clear_console();
-                std::cout << "Value: ";
+                std::cout << "Wrong index will trigger runtime exception. Index: ";
                 int index = Utils::get_input();
                 std::cout << "Found value: ";
                 std::cout << list->get(index) << std::endl;
@@ -104,6 +104,7 @@ void ListUi::program_loop() {
                 break;
             }
             case 12: {
+                delete list;
                 go_back_request = true;
                 break;
             }
@@ -123,7 +124,7 @@ void ListUi::show_menu() {
     std::cout << "7. Find value" << std::endl;
     std::cout << "8. Get by index" << std::endl;
     std::cout << "9. Swap values" << std::endl;
-    std::cout << "10. Print array" << std::endl;
+    std::cout << "10. Print list" << std::endl;
     std::cout << "11. Read collection from file" << std::endl;
     std::cout << "12. Go back" << std::endl;
     std::cout << "Choice (1-12): ";

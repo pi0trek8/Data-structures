@@ -60,9 +60,11 @@ void Gui::program_loop() {
                             continue;
                     }
                 }
+                break;
             }
             case 3:
                 program_exit_requested = true;
+                break;
             default:
                 continue;
         }

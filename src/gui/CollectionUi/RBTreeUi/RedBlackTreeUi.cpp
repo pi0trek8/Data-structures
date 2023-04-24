@@ -63,6 +63,7 @@ void RedBlackTreeUi::program_loop() {
             }
             case 6: {
                 Utils::clear_console();
+                delete redBlackTree;
                 go_back_request = true;
                 break;
             }

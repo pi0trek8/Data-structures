@@ -60,6 +60,7 @@ void HeapUi::program_loop() {
             case 6: {
                 Utils::clear_console();
                 go_back_request = true;
+                delete heap;
                 break;
             }
             default:
